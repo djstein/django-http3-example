@@ -1,0 +1,25 @@
+# output-format: json
+
+strictness: medium
+test-warnings: true
+doc-warnings: false
+
+ignore-paths:
+  - docs
+  - .vscode
+  - migrations
+
+ignore-patterns:
+  - (^|/)skip(this)?(/|$)
+
+pycodestyle:
+  disable:
+    - W602
+    - W603
+  enable:
+    - W601
+  options:
+    max-line-length: 88 # 88 is line length specified by black
+
+mccabe:
+  run: true
