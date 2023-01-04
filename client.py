@@ -276,7 +276,9 @@ async def perform_http_request(
         "Response received for %s %s : %d bytes in %.1f s (%.3f Mbps)"
         % (method, urlparse(url).path, octets, elapsed, octets * 8 / elapsed / 1000000)
     )
-
+    for http_event in http_events:
+        if isinstance(http_event, DataReceived):
+            logger.info(http_event.data)
     # output response
     if output_dir is not None:
         output_path = os.path.join(
